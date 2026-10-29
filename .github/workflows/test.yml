@@ -1,0 +1,26 @@
+# PR を main に取り込むときに単体テストを自動実行する
+name: Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # リポジトリのコードを取得する
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # テストに使う Python を用意する
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # test_sales.py の単体テストを実行する（失敗すると PR のチェックが赤くなる）
+      - name: Run unit tests
+        run: python -m unittest -v test_sales
