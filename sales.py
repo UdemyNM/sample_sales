@@ -2,7 +2,7 @@ def total(sales):
     """売り上げの合計金額を返す"""
     result = 0
     for sale in sales: # 中身を繰り返し取り出す
-        result += sale["金額"] # sale["金額"]の値をresultにプラスしていく
+        result -= sale["金額"] # sale["金額"]の値をresultにプラスしていく
     return result
 
 
