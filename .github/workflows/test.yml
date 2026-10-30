@@ -1,8 +1,12 @@
-# PR を main に取り込むときに単体テストを自動実行する
+# PR 作成・更新時と、main へのマージ直後に単体テストを自動実行する
+# （PR 時のチェックをブランチ保護の必須チェックにして、失敗したらマージさせない）
 name: Unit Tests
 
 on:
   pull_request:
+    branches:
+      - main
+  push:
     branches:
       - main
 
